@@ -1,0 +1,21 @@
+{% extends "faculty/base.html" %}
+{% load static %}
+{% block title %}Кафедри{% endblock %}
+{% block content %}
+    <div class="container">
+        <header class="page-heading illustrated-heading"><div class="heading-copy"><p class="eyebrow">Факультет природничих наук</p><h1>Кафедри</h1><p>Люди, які навчають досліджувати.</p></div><figure class="heading-visual"><img src="{% static 'nature.png' %}" alt="Папороть із краплями роси"><figcaption>Академічна спільнота</figcaption></figure></header>
+        <div class="entry-list">
+            {% for department in departments %}
+                <article class="department-entry">
+                    <span class="entry-number">{{ forloop.counter|stringformat:"02d" }}</span>
+                    <div><h2><a href="{% url 'faculty:department_id' department.id %}">{{ department.name }} <span aria-hidden="true">↗</span></a></h2><p class="label">Завідувач кафедри</p><p>{{ department.full }}</p></div>
+                    <div><h3 class="label">Випускові спеціальності</h3><ul class="link-list">
+                        {% for program in department.program_set.all %}
+                            <li><a href="{% url 'faculty:program_id' program.id %}"><span class="code">{{ program.code }}</span> {{ program.name }} <span aria-hidden="true">↗</span></a></li>
+                        {% empty %}<li class="muted">Кафедра не має випускових спеціальностей.</li>{% endfor %}
+                    </ul></div>
+                </article>
+            {% empty %}<p class="empty-state">Кафедри ще не додані.</p>{% endfor %}
+        </div>
+    </div>
+{% endblock %}

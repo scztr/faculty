@@ -1,0 +1,18 @@
+{% extends "faculty/base.html" %}
+{% load static %}
+{% block title %}Спеціальності{% endblock %}
+{% block content %}
+    <div class="container">
+        <header class="page-heading illustrated-heading"><div class="heading-copy"><p class="eyebrow">Навчання в НаУКМА</p><h1>Спеціальності</h1><p>Знайди свій напрям у природничих науках.</p></div><figure class="heading-visual"><img src="{% static 'micro.png' %}" alt="Діатомові водорості крізь окуляр мікроскопа"><figcaption>Обирай свій масштаб відкриттів</figcaption></figure></header>
+        <div class="program-grid">
+            {% for program in programs %}
+                <article class="program-card">
+                    <p class="eyebrow">Спеціальність / {{ program.code }}</p>
+                    <h2><a href="{% url 'faculty:program_id' program.id %}">{{ program.name }} <span aria-hidden="true">↗</span></a></h2>
+                    <p class="summary">{{ program.descr|truncatewords:50 }}</p>
+                    <div class="coordinator"><p class="label">Координатор набору</p><p>{{ program.coord }}</p><p class="contact-text">{{ program.coord_contact }}</p></div>
+                </article>
+            {% empty %}<p class="empty-state">Спеціальності ще не додані.</p>{% endfor %}
+        </div>
+    </div>
+{% endblock %}

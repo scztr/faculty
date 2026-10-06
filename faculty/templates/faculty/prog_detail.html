@@ -1,0 +1,19 @@
+{% extends "faculty/base.html" %}
+{% block title %}{{ program.name }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <header class="page-heading illustrated-heading"><div class="heading-copy"><a class="back-link" href="{% url 'faculty:programs' %}">← Усі спеціальності</a><p class="eyebrow">Спеціальність / {{ program.code }}</p><h1>{{ program.name }}</h1></div>{% include "faculty/subject_visual.html" with subject_name=program.name %}</header>
+        <div class="detail-layout">
+            <div>
+                <section class="text-section"><h2>Про спеціальність</h2><div class="prose">{{ program.descr|linebreaks }}</div></section>
+                <section class="text-section"><h2>Дисципліни</h2><div class="prose disciplines">{{ program.disc|linebreaks }}</div></section>
+            </div>
+            <aside class="info-panel" aria-label="Інформація про вступ">
+                <p class="eyebrow">Плануєш вступати?</p><h2>Будьмо на зв’язку</h2>
+                <p class="label">Координатор набору</p><p>{{ program.coord }}</p><p class="contact-text">{{ program.coord_contact }}</p>
+                <div class="panel-divider"></div><p class="label">Випускова кафедра</p>
+                <a href="{% url 'faculty:department_id' program.department.id %}">{{ program.department.name }} ↗</a>
+            </aside>
+        </div>
+    </div>
+{% endblock %}

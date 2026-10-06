@@ -1,0 +1,15 @@
+{% load static %}
+{% with subject=subject_name|lower %}
+    <figure class="subject-visual">
+        {% if 'біолог' in subject or 'діагност' in subject %}
+            <img src="{% static 'micro.png' %}" alt="Діатомові водорості: ілюстрація виду крізь мікроскоп">
+            <figcaption>Життя в деталях</figcaption>
+        {% elif 'еколог' in subject or 'фізичного виховання' in subject %}
+            <img src="{% static 'nature.png' %}" alt="Папороть у природному середовищі">
+            <figcaption>Природа та її закономірності</figcaption>
+        {% else %}
+            <img src="{% static 'crystals.png' %}" alt="Кристалічні структури: наукова ілюстрація">
+            <figcaption>Досліджувати світ навколо</figcaption>
+        {% endif %}
+    </figure>
+{% endwith %}

@@ -1,0 +1,51 @@
+/* Academic exchange page */
+.exchange-page { padding-block: 36px 72px; }
+.exchange-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.35fr 1fr; gap: 35px; padding: 58px; border-radius: 22px; background: var(--forest); color: var(--paper); }
+.exchange-hero .eyebrow { color: var(--lime); }
+.exchange-hero h1 { font-size: clamp(54px, 6.6vw, 100px); line-height: 1.02; margin-bottom: 26px; }
+.exchange-lead { max-width: 560px; color: #d7e0d3; font-size: 17px; }
+.exchange-jump { display: inline-flex; align-items: center; gap: 35px; margin-top: 16px; padding: 13px 22px; border-radius: 32px; background: var(--lime); color: var(--forest); text-decoration: none; font-size: 14px; font-weight: 600; }
+.exchange-orbit { position: relative; min-height: 320px; display: grid; place-items: center; }
+.orbit-ring { position: absolute; width: 290px; height: 290px; border: 1px solid #bdd39965; border-radius: 50%; }
+.orbit-two { width: 150px; transform: rotate(35deg); }
+.orbit-three { width: 150px; transform: rotate(-35deg); }
+.orbit-one::after { content: ''; position: absolute; width: 18px; height: 18px; background: var(--lime); border-radius: 50%; top: 39px; right: 30px; }
+.orbit-center { font-size: 98px; font-weight: 200; color: var(--lime); }
+.orbit-note { position: absolute; bottom: 0; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #d7e0d3; }
+.exchange-catalog { scroll-margin-top: 24px; }
+.exchange-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding-block: 52px 28px; }
+.exchange-section-heading .eyebrow { margin-bottom: 12px; color: var(--muted); }
+.exchange-section-heading h2 { margin: 0; font-size: clamp(32px, 3.5vw, 48px); }
+.exchange-section-heading > p { margin: 0; max-width: 300px; color: var(--muted); font-size: 14px; }
+.exchange-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.exchange-card { display: flex; flex-direction: column; padding: 32px; border-radius: 18px; background: #f9faf5; border: 1px solid var(--line); }
+.exchange-card-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 30px; }
+.exchange-country { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.exchange-status { display: inline-flex; align-items: center; gap: 8px; padding: 5px 11px; background: #e0ebcf; border-radius: 20px; color: #25482b; font-size: 12px; }
+.exchange-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.exchange-status.is-closed { background: #eae9e3; color: #66645b; }
+.exchange-card h3 { font-size: clamp(28px, 2.8vw, 40px); margin-bottom: 20px; }
+.exchange-description { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
+.exchange-description p:last-child { margin: 0; }
+.exchange-facts { margin: auto 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid var(--line); padding-top: 22px; }
+.exchange-facts dt { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
+.exchange-facts dd { margin: 0; font-size: 20px; }
+.exchange-facts .exchange-number { font-size: 30px; line-height: 1.2; }
+.exchange-language { grid-column: 1 / -1; }
+.exchange-language dd { font-size: 16px; }
+.exchange-empty { grid-column: 1 / -1; padding: 40px; background: #e0e6d6; border-radius: 18px; }
+@media (max-width: 1100px) {
+  .header-inner { flex-wrap: wrap; gap: 12px 24px; padding-block: 16px; }
+  .header-inner nav { flex-wrap: wrap; gap: 12px 24px; }
+  .header-inner nav a { padding-block: 10px; }
+  .header-contact { display: none; }
+}
+@media (max-width: 800px) {
+  .exchange-page { padding-block: 24px 48px; }
+  .exchange-hero { grid-template-columns: 1fr; padding: 32px 24px; }
+  .exchange-orbit { display: none; }
+  .exchange-hero h1 { font-size: clamp(48px, 10vw, 70px); }
+  .exchange-grid { grid-template-columns: 1fr; }
+  .exchange-card { padding: 24px; }
+  .exchange-section-heading { align-items: start; flex-direction: column; }
+}
