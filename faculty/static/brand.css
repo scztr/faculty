@@ -1,0 +1,12 @@
+/* Green monogram supplied by the user, adapted using ImageGen. */
+.brand { display: flex; align-items: center; gap: 16px; flex: 0 1 365px; text-decoration: none; color: #173b2b; }
+.brand:hover { text-decoration: none; }
+.brand-symbol { position: relative; display: block; flex: 0 0 54px; width: 54px; height: 57px; overflow: hidden; }
+.brand-symbol img { position: absolute; width: 101px; height: auto; max-width: none; left: 50%; top: 50%; transform: translate(-50%, -54%); mix-blend-mode: normal; }
+.brand-name { display: block; line-height: 1.25; }
+.brand-name > span { display: block; font-size: 11px; letter-spacing: .025em; margin-bottom: 3px; }
+.brand-name strong { display: block; font-size: 18px; font-weight: 600; letter-spacing: -.025em; }
+@media (max-width: 800px) {
+    .brand { flex-basis: 330px; }
+    .brand-name strong { font-size: 17px; }
+}

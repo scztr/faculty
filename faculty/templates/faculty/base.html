@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Факультет природничих наук{% endblock %} | НаУКМА</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'brand.css' %}">
+    <link rel="stylesheet" href="{% static 'exchange.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="{% url 'faculty:home' %}" aria-label="НаУКМА — на головну">
+                <span class="brand-symbol"><img src="{% static 'naukma-green.png' %}" alt="" width="1536" height="1024"></span>
+                <span class="brand-name"><span>Національний університет</span><strong>Києво-Могилянська<br>академія</strong></span>
+            </a>
+            <nav aria-label="Основна навігація">
+                <a href="{% url 'faculty:home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Головна</a>
+                <a href="{% url 'faculty:departments' %}" {% if request.resolver_match.url_name == 'departments' or request.resolver_match.url_name == 'department_id' %}aria-current="page"{% endif %}>Кафедри</a>
+                <a href="{% url 'faculty:programs' %}" {% if request.resolver_match.url_name == 'programs' or request.resolver_match.url_name == 'program_id' %}aria-current="page"{% endif %}>Спеціальності</a>
+                <a href="{% url 'exchange:exchange_list' %}" {% if request.resolver_match.namespace == 'exchange' %}aria-current="page"{% endif %}>Програми обміну</a>
+            </nav><a class="header-contact" href="{% url 'faculty:home' %}#contacts">Зв’язатися <span aria-hidden="true">↗</span></a>
+        </div>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+    <footer class="site-footer">
+        <div><strong>Факультет природничих наук</strong><p>Національний університет «Києво-Могилянська академія»</p></div>
+        <div class="footer-links"><a href="{% url 'faculty:home' %}#contacts">Контакти</a><a href="https://www.ukma.edu.ua/">Сайт НаУКМА ↗</a><span>Навчальний проєкт</span></div>
+    </footer>
+<script src="{% static 'slider.js' %}" defer></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "faculty/base.html" %}
+{% block title %}{{ department.name }}{% endblock %}
+{% block content %}
+    <div class="container">
+        <header class="page-heading illustrated-heading"><div class="heading-copy"><a class="back-link" href="{% url 'faculty:departments' %}">← Усі кафедри</a><p class="eyebrow">Факультет природничих наук / Кафедра</p><h1>{{ department.name }}</h1><p class="label">Завідувач кафедри</p><p>{{ department.full }}</p></div>{% include "faculty/subject_visual.html" with subject_name=department.name %}</header>
+        <section class="split-section">
+            <div><p class="eyebrow">01 / Освіта</p><h2>Спеціальності</h2></div>
+            <ul class="link-list large-links">
+                {% for program in programs %}<li><a href="{% url 'faculty:program_id' program.id %}"><span class="code">{{ program.code }}</span> {{ program.name }} <span aria-hidden="true">↗</span></a></li>
+                {% empty %}<li class="muted">Спеціальності ще не додані.</li>{% endfor %}
+            </ul>
+        </section>
+        <section class="split-section">
+            <div><p class="eyebrow">02 / Люди</p><h2>Викладачі</h2></div>
+            <div class="teacher-list">
+                {% for teacher in teachers %}<article><h3>{{ teacher.name }}</h3><p>{{ teacher.pos }}</p><p class="muted">{{ teacher.degree }}</p></article>
+                {% empty %}<p class="muted">Викладачі ще не додані.</p>{% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

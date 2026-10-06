@@ -1,0 +1,44 @@
+{% extends "faculty/base.html" %}
+{% load static %}
+{% block title %}{{ home.title|default:"Факультет природничих наук" }}{% endblock %}
+{% block content %}
+    <section class="intro container">
+        <div class="intro-side"><p class="eyebrow">Києво-Могилянська<br>академія</p><div class="science-mark" aria-hidden="true">[ фпн ]</div><p>Біологія / Хімія<br>Екологія / Фізика</p></div>
+        <div class="intro-main"><p class="eyebrow">Пізнавати. Досліджувати. Відкривати.</p><h1>{{ home.title|default:"Факультет природничих наук" }}</h1></div>
+    </section>
+    <section class="feature container" aria-label="Знайомство з факультетом">
+        <div class="feature-image science-slider" data-slider role="region" aria-roledescription="карусель" aria-label="Світ природничих наук">
+            <figure class="science-slide is-active" data-slide aria-hidden="false">
+                <img src="{% static 'nature.png' %}" alt="Папороть із краплями роси у сонячному світлі">
+                <figcaption>01 / Природа та екосистеми</figcaption>
+            </figure>
+            <figure class="science-slide" data-slide aria-hidden="true">
+                <img src="{% static 'micro.png' %}" alt="Ілюстрація діатомових водоростей крізь окуляр мікроскопа">
+                <figcaption>02 / Світ крізь мікроскоп</figcaption>
+            </figure>
+            <figure class="science-slide" data-slide aria-hidden="true">
+                <img src="{% static 'crystals.png' %}" alt="Ілюстрація напівпрозорих кристалів із чіткими гранями">
+                <figcaption>03 / Структура матерії</figcaption>
+            </figure>
+            <div class="slider-controls" data-controls hidden>
+                <button type="button" data-prev aria-label="Попередній слайд">←</button>
+                <div class="slider-dots" aria-label="Вибір слайда">
+                    <button type="button" data-dot="0" aria-label="Слайд 1: природа" aria-pressed="true"></button>
+                    <button type="button" data-dot="1" aria-label="Слайд 2: мікроскоп" aria-pressed="false"></button>
+                    <button type="button" data-dot="2" aria-label="Слайд 3: кристали" aria-pressed="false"></button>
+                </div>
+                <button type="button" data-next aria-label="Наступний слайд">→</button>
+                <button type="button" class="slider-pause" data-pause aria-label="Призупинити автоматичну зміну" aria-pressed="false">Ⅱ</button>
+            </div>
+        </div>
+        <div class="feature-panel"><p class="eyebrow">Освіта та дослідження</p><h2>Світ складніший.<br>Пізнавай його<br>глибше.</h2><p>Обирай свій напрям у природничих науках.</p><a href="{% url 'faculty:programs' %}">Наші спеціальності <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <div class="container">
+        <section class="split-section about-section"><div><p class="eyebrow">01 / Про нас</p><h2>Наука починається<br>із запитання.</h2></div><div class="prose">{{ home.descr|linebreaks }}</div></section>
+        <section class="explore">
+            <a href="{% url 'faculty:departments' %}"><span class="eyebrow">Академічна спільнота</span><h2>Кафедри <span aria-hidden="true">↗</span></h2><p>Викладачі та спеціальності кожної кафедри.</p></a>
+            <a href="{% url 'faculty:programs' %}"><span class="eyebrow">Освітні напрями</span><h2>Спеціальності <span aria-hidden="true">↗</span></h2><p>Дисципліни, описи та контакти координаторів.</p></a>
+        </section>
+        <section id="contacts" class="split-section contacts"><div><p class="eyebrow">02 / Контакти</p><h2>Знайомство<br>починається тут.</h2></div><div class="prose">{{ home.contacts|linebreaks }}</div></section>
+    </div>
+{% endblock %}

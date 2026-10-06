@@ -1,0 +1,34 @@
+{% extends "faculty/base.html" %}
+{% block title %}Програми обміну{% endblock %}
+{% block content %}
+<div class="container exchange-page">
+  <section class="exchange-hero" aria-labelledby="exchange-title">
+    <div>
+      <p class="eyebrow">НаУКМА / Академічна мобільність</p>
+      <h1 id="exchange-title">Наука без<br>кордонів.</h1>
+      <p class="exchange-lead">Програми академічного обміну — нове середовище, міжнародний досвід і знайомства, що розширюють горизонти.</p>
+      <a class="exchange-jump" href="#exchange-programs">Переглянути програми <span aria-hidden="true">↘</span></a>
+    </div>
+    <div class="exchange-orbit" aria-hidden="true"><span class="orbit-ring orbit-one"></span><span class="orbit-ring orbit-two"></span><span class="orbit-ring orbit-three"></span><span class="orbit-center">↗</span><span class="orbit-note">Досліджуй світ</span></div>
+  </section>
+  <section id="exchange-programs" class="exchange-catalog" aria-labelledby="catalog-title">
+    <div class="exchange-section-heading"><div><p class="eyebrow">Можливості для студентів</p><h2 id="catalog-title">Програми обміну</h2></div><p>Порівняй умови та перевір дедлайн подачі.</p></div>
+    <div class="exchange-grid">
+      {% for program in programs %}
+      <article class="exchange-card">
+        <div class="exchange-card-top"><span class="exchange-country">{{ program.country }}</span><span class="exchange-status{% if not program.is_open %} is-closed{% endif %}">{% if program.is_open %}Прийом триває{% else %}Прийом завершено{% endif %}</span></div>
+        <h3>{{ program.uni_name }}</h3>
+        <div class="exchange-description">{{ program.descr|linebreaks }}</div>
+        <dl class="exchange-facts">
+          <div class="exchange-language"><dt>Мови навчання</dt><dd>{{ program.language }}</dd></div>
+          <div><dt>Кількість місць</dt><dd class="exchange-number">{{ program.places }}</dd></div>
+          <div><dt>Дедлайн подачі</dt><dd><time datetime="{{ program.deadline|date:'Y-m-d' }}">{{ program.deadline|date:"d.m.Y" }}</time></dd></div>
+        </dl>
+      </article>
+      {% empty %}
+      <p class="exchange-empty">Програми обміну ще не додані. Завітай сюди пізніше.</p>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}
